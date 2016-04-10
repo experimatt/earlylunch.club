@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Is it time for lunch?</title>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/sandwhich.ico" />
+  <style>
+    {
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        color: #333
+    }
+
+    .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh
+    }
+
+    .center.success {
+        background: #47b800
+    }
+
+    h1 {
+        font-size: 15vw;
+        width: 100%;
+        text-align: center
+    }
+
+    .success h1,
+    .success h2 {
+        color: #FFF
+    }
+
+    h2 {
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        margin: 30px
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+        var d = new Date(); // current time
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+          if (hours == 11 && minutes >= 30) {
+              $(".center").addClass('success');
+              $("h1").html("Yes! Time to eat.");
+              $("h2").html("Only " + (60 - minutes) + " minutes left.");
+          } else if (hours >= 12) {
+              $(".center").removeClass('success');
+              $("h1").html("Too late!");
+              $("h2").html("Lunch ended " + (hours - 12) + " hours and " + minutes + " minutes ago.");
+          } 
+          else {
+              $(".center").removeClass('success');
+              $("h1").html("Not yet.");
+              //$("h2").html("Lunch starts in " + (11 - hours) + " hours and " + (30 - minutes) + " minutes.");              
+          }
+        });
+  </script>
+</head>
+<body>
+
+<div class="center">
+    <h1></h1>
+    <h2></h2>
+</div>
+
+
+</body>
+</html>
